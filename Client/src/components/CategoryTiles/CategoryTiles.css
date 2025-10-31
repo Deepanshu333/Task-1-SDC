@@ -1,0 +1,248 @@
+/* Category Tiles Styles */
+.category-tiles {
+  background-color: var(--color-beige);
+  position: relative;
+}
+
+.category-tiles__header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.category-tiles__header h2 {
+  color: var(--color-black);
+}
+
+.category-tiles__header p {
+  color: var(--color-brown);
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+.category-tiles__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: var(--spacing-xl);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Individual Category Tile */
+.category-tile {
+  display: block;
+  text-decoration: none;
+  background-color: var(--color-white);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all var(--transition-standard);
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.8s ease-out forwards;
+  position: relative;
+}
+
+.category-tile:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.category-tile__image-wrapper {
+  position: relative;
+  height: 280px;
+  overflow: hidden;
+}
+
+.category-tile__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform var(--transition-slow);
+}
+
+.category-tile:hover .category-tile__image {
+  transform: scale(1.05);
+}
+
+.category-tile__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(0, 0, 0, 0.3) 100%
+  );
+  opacity: 0;
+  transition: opacity var(--transition-standard);
+}
+
+.category-tile:hover .category-tile__overlay {
+  opacity: 1;
+}
+
+.category-tile__content {
+  padding: var(--spacing-lg);
+  position: relative;
+}
+
+.category-tile__title {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--color-black);
+  margin-bottom: var(--spacing-sm);
+  transition: color var(--transition-standard);
+}
+
+.category-tile:hover .category-tile__title {
+  color: var(--color-rosy);
+}
+
+.category-tile__description {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--color-brown);
+  line-height: 1.6;
+  margin-bottom: var(--spacing-md);
+}
+
+.category-tile__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-black);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all var(--transition-standard);
+  position: relative;
+}
+
+.category-tile__cta::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--color-rosy);
+  transition: width var(--transition-standard);
+}
+
+.category-tile:hover .category-tile__cta {
+  color: var(--color-rosy);
+  transform: translateX(4px);
+}
+
+.category-tile:hover .category-tile__cta::after {
+  width: calc(100% - 20px);
+}
+
+.category-tile__cta svg {
+  transition: transform var(--transition-standard);
+}
+
+.category-tile:hover .category-tile__cta svg {
+  transform: rotate(45deg);
+}
+
+/* Animation keyframes */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .category-tiles__grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+  }
+  
+  .category-tile__image-wrapper {
+    height: 250px;
+  }
+  
+  .category-tile__content {
+    padding: var(--spacing-md);
+  }
+}
+
+@media (max-width: 768px) {
+  .category-tiles {
+    padding: var(--spacing-xl) 0;
+  }
+  
+  .category-tiles__grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+  
+  .category-tile__image-wrapper {
+    height: 220px;
+  }
+  
+  .category-tile__title {
+    font-size: 1.3rem;
+  }
+  
+  .category-tile__description {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .category-tiles__header h2 {
+    font-size: 2rem;
+  }
+  
+  .category-tiles__header p {
+    font-size: 1rem;
+    padding: 0 var(--spacing-sm);
+  }
+  
+  .category-tile {
+    margin: 0 var(--spacing-sm);
+  }
+  
+  .category-tile__image-wrapper {
+    height: 200px;
+  }
+  
+  .category-tile__content {
+    padding: var(--spacing-md) var(--spacing-sm);
+  }
+}
+
+/* Special effect for middle tile (larger on desktop) */
+@media (min-width: 1200px) {
+  .category-tiles__grid {
+    grid-template-columns: 1fr 1.2fr 1fr;
+    align-items: start;
+  }
+  
+  .category-tile:nth-child(2) {
+    transform: translateY(-20px);
+  }
+  
+  .category-tile:nth-child(2):hover {
+    transform: translateY(-28px);
+  }
+  
+  .category-tile:nth-child(2) .category-tile__image-wrapper {
+    height: 320px;
+  }
+}

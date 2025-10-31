@@ -1,0 +1,45 @@
+/* Main App Layout */
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  padding-top: 80px; /* Account for fixed header */
+}
+
+/* Ensure smooth scrolling throughout the app */
+* {
+  scroll-behavior: smooth;
+}
+
+/* Remove default margins and add consistent styling */
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* Focus styles for accessibility */
+*:focus {
+  outline: 2px solid var(--color-rosy);
+  outline-offset: 2px;
+}
+
+/* Skip link for accessibility */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--color-black);
+  color: var(--color-white);
+  padding: 8px;
+  z-index: 10000;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 6px;
+}

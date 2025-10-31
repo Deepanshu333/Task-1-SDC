@@ -1,0 +1,207 @@
+/* Solvera Luxury Jewelry - Global Styles */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap');
+
+/* Color Palette Variables */
+:root {
+  --color-black: #000000;
+  --color-white: #FFFFFF;
+  --color-beige: #F3ECE3;
+  --color-brown: #91766E;
+  --color-rosy: #C8A19C;
+  --color-dark-rosy: #A08A88;
+  --color-gray: #666666;
+  --color-light-gray: #E5E5E5;
+  --color-rosy-rgb: 200, 161, 156;
+
+  /* Typography */
+  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'Montserrat', sans-serif;
+
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  --spacing-xxl: 4rem;
+
+  /* Breakpoints */
+  --breakpoint-mobile: 768px;
+  --breakpoint-tablet: 1024px;
+  --breakpoint-desktop: 1200px;
+
+  /* Transitions */
+  --transition-fast: 0.2s ease-in-out;
+  --transition-standard: 0.3s ease-in-out;
+  --transition-slow: 0.5s ease-in-out;
+}
+
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-black);
+  background-color: var(--color-white);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography Classes */
+.heading-primary {
+  font-family: var(--font-serif);
+  font-size: 4rem;
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--color-black);
+}
+
+.heading-secondary {
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--color-black);
+}
+
+.heading-tertiary {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--color-black);
+}
+
+.text-body {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--color-black);
+}
+
+.text-small {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--color-brown);
+}
+
+/* Button Styles */
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-standard);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.btn-primary {
+  background-color: var(--color-rosy);
+  color: var(--color-white);
+  border: 2px solid var(--color-rosy);
+}
+
+.btn-primary:hover {
+  background-color: transparent;
+  color: var(--color-rosy);
+  border: 2px solid var(--color-rosy);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-black);
+  border: 2px solid var(--color-black);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--color-white);
+  border: 2px solid var(--color-rosy);
+}
+
+.btn-outline:hover {
+  background-color: var(--color-rosy);
+  color: var(--color-white);
+}
+
+/* Utility Classes */
+.container {
+  max-width: var(--breakpoint-desktop);
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+.section-padding {
+  padding: var(--spacing-xxl) 0;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.mb-sm { margin-bottom: var(--spacing-sm); }
+.mb-md { margin-bottom: var(--spacing-md); }
+.mb-lg { margin-bottom: var(--spacing-lg); }
+.mb-xl { margin-bottom: var(--spacing-xl); }
+
+.mt-sm { margin-top: var(--spacing-sm); }
+.mt-md { margin-top: var(--spacing-md); }
+.mt-lg { margin-top: var(--spacing-lg); }
+.mt-xl { margin-top: var(--spacing-xl); }
+
+/* Responsive Typography */
+@media (max-width: 768px) {
+  .heading-primary {
+    font-size: 2.5rem;
+  }
+  
+  .heading-secondary {
+    font-size: 2rem;
+  }
+  
+  .heading-tertiary {
+    font-size: 1.5rem;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-beige);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-brown);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-rosy);
+}

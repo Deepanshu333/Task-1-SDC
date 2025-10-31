@@ -1,0 +1,61 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper function to check if user is authenticated
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    // Helper function to check if user owns the resource
+    function isOwner(uid) {
+      return request.auth != null && request.auth.uid == uid;
+    }
+    
+    // Products collection - Read only for authenticated users
+    match /products/{productId} {
+      allow read: if isAuthenticated();
+      allow write: if false; // Only admins can write (set up admin authentication separately)
+    }
+    
+    // Users collection
+    match /users/{userId} {
+      // Users can read their own profile
+      allow read: if isOwner(userId);
+      
+      // Users can create their own profile
+      allow create: if isOwner(userId);
+      
+      // Users can update their own profile
+      allow update: if isOwner(userId);
+      
+      // Users cannot delete their own profile (prevent accidental deletion)
+      allow delete: if false;
+      
+      // User's cart subcollection
+      match /cart/{cartItemId} {
+        allow read, write: if isOwner(userId);
+      }
+      
+      // User's wishlist subcollection
+      match /wishlist/{wishlistItemId} {
+        allow read, write: if isOwner(userId);
+      }
+      
+      // User's orders subcollection
+      match /orders/{orderId} {
+        allow read: if isOwner(userId);
+        // Orders can only be created by the app, not directly by users
+        allow create: if isOwner(userId);
+        // Orders cannot be modified or deleted by users
+        allow update, delete: if false;
+      }
+    }
+    
+    // Deny all other access
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
+

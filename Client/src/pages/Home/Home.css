@@ -1,0 +1,221 @@
+/* Home Page Styles */
+.home {
+  padding-top: 0; /* Hero handles its own spacing */
+}
+
+/* New Arrivals Section */
+.new-arrivals {
+  background-color: var(--color-white);
+}
+
+.new-arrivals__header {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.new-arrivals__header p {
+  color: var(--color-brown);
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+.new-arrivals__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-xl);
+  margin-bottom: var(--spacing-xl);
+}
+
+/* Product Preview Cards */
+.product-preview {
+  background-color: var(--color-white);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: all var(--transition-standard);
+  cursor: pointer;
+}
+
+.product-preview:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.product-preview__image {
+  position: relative;
+  height: 280px;
+  overflow: hidden;
+}
+
+.product-preview__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform var(--transition-slow);
+}
+
+.product-preview:hover .product-preview__image img {
+  transform: scale(1.05);
+}
+
+.product-preview__content {
+  padding: var(--spacing-md);
+  text-align: center;
+}
+
+.product-preview__title {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--color-black);
+  margin-bottom: var(--spacing-xs);
+}
+
+.product-preview__price {
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-brown);
+  margin: 0;
+}
+
+.new-arrivals__cta {
+  text-align: center;
+}
+
+/* Brand Story Section */
+.brand-story__content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-xxl);
+  align-items: center;
+}
+
+.brand-story__text {
+  max-width: 500px;
+}
+
+.brand-story__text h2 {
+  color: var(--color-black);
+}
+
+.brand-story__text p {
+  color: var(--color-brown);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.brand-story__image {
+  position: relative;
+}
+
+.brand-story__image img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
+  transition: transform var(--transition-slow);
+}
+
+.brand-story__image:hover img {
+  transform: scale(1.02);
+}
+
+/* Add subtle decorative elements */
+.brand-story__image::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(135deg, var(--color-rosy), transparent);
+  border-radius: 50%;
+  opacity: 0.1;
+  z-index: -1;
+}
+
+.brand-story__image::after {
+  content: '';
+  position: absolute;
+  bottom: -30px;
+  right: -30px;
+  width: 150px;
+  height: 150px;
+  background: linear-gradient(135deg, transparent, var(--color-brown));
+  border-radius: 50%;
+  opacity: 0.05;
+  z-index: -1;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .new-arrivals__grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+  }
+  
+  .brand-story__content {
+    gap: var(--spacing-xl);
+  }
+}
+
+@media (max-width: 768px) {
+  .new-arrivals__grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+  }
+  
+  .product-preview__image {
+    height: 250px;
+  }
+  
+  .brand-story__content {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+    text-align: center;
+  }
+  
+  .brand-story__text {
+    max-width: none;
+  }
+  
+  .brand-story__image {
+    order: -1;
+  }
+}
+
+@media (max-width: 480px) {
+  .new-arrivals__header p {
+    font-size: 1rem;
+    padding: 0 var(--spacing-sm);
+  }
+  
+  .new-arrivals__grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+    padding: 0 var(--spacing-sm);
+  }
+  
+  .product-preview__image {
+    height: 220px;
+  }
+  
+  .product-preview__content {
+    padding: var(--spacing-sm);
+  }
+  
+  .product-preview__title {
+    font-size: 1.1rem;
+  }
+  
+  .brand-story__content {
+    gap: var(--spacing-md);
+  }
+  
+  .brand-story__text p {
+    font-size: 0.95rem;
+  }
+}
